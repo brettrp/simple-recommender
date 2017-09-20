@@ -15,7 +15,7 @@ but there is nothing specific to this dataset in the code, and other similar rec
 Prequisites
 ===========
 - Java 1.8
-- Maven 3.2
+- Maven 3.2 or later
 
 Building
 ========
