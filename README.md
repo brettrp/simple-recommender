@@ -12,6 +12,17 @@ simple-recommender is bundled with a sample dataset of anime from
 https://www.kaggle.com/CooperUnion/anime-recommendations-database  
 but there is nothing specific to this dataset in the code, and other similar recommendations databases could easily be used instead.
 
+Getting the Source
+=========
+Before you can download the source files, you will need to install git-lfs so that GitHub can handle the large data files bundled with thep roject: 
+
+https://git-lfs.github.com
+
+Then, use  
+ `git clone https://github.com/brettrp/simple-recommender.git`  
+  to download the source - don't use `Download Zip`
+
+
 Prequisites
 ===========
 - Java 1.8
