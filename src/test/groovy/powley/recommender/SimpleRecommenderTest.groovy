@@ -24,10 +24,10 @@ class SimpleRecommenderTest
     @Test
     void test1BuildRecommenders() {
         SimpleRecommender recommender = SimpleRecommender.getInstance()
-        recommender.readItemRecords("src/main/datasets/anime/anime.csv", "anime_id")
+        recommender.readItemRecords("target/datasets/anime/anime.csv", "anime_id")
         assert recommender.itemDetails.size() > 0
 
-        recommender.buildRecommenders("src/main/datasets/anime/rating.csv" )
+        recommender.buildRecommenders("target/datasets/anime/rating.csv" )
         assert recommender.userRecommender != null
         assert recommender.itemRecommender != null
 

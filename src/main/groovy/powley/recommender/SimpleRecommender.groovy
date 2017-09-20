@@ -3,6 +3,9 @@ package powley.recommender
 import com.opencsv.CSVIterator
 import com.opencsv.CSVReader
 import groovy.util.logging.Slf4j
+import org.apache.mahout.cf.taste.common.NoSuchItemException
+import org.apache.mahout.cf.taste.common.NoSuchUserException
+import org.apache.mahout.cf.taste.common.TasteException
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel
 import org.apache.mahout.cf.taste.impl.neighborhood.ThresholdUserNeighborhood
 import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender
@@ -125,15 +128,19 @@ class SimpleRecommender {
      * Get a list of user based recommendations
      * @param userId the user id
      * @param count the number of recommendations to return
-     * @return a list of maps of user details
+     * @return a list of maps of user details, or null if the user doesn't exist
      */
     List getUserRecommendation(long userId, int count) {
-        // TODO: handle new user
-        // TODO: handle no recommendations returned
-
         log.debug "getUserRecommendation ${userId} ${count}"
-        List recommendations = userRecommender.recommend( userId, count)
-        recommendations.collect{ itemDetails[it.itemID] }
+
+        try {
+            List recommendations = userRecommender.recommend( userId, count)
+            recommendations.collect{ itemDetails[it.itemID] }
+        } catch (NoSuchUserException ne) {
+            // In future, we could add a temporary user with preferences to get recommendations for a new user
+            log.debug "User ${userId} doesn't exist"
+            return null
+        }
     }
 
     /**
@@ -144,8 +151,13 @@ class SimpleRecommender {
      */
 
     List getItemRecommendation(long itemId, int count) {
-        List recommendations = itemRecommender.recommend( itemId, count)
-        recommendations.collect{ itemDetails[it.itemID] }
+        try {
+            List recommendations = itemRecommender.recommend(itemId, count)
+            recommendations.collect { itemDetails[it.itemID] }
+        } catch (TasteException te) {
+            log.debug "Item ${itemId} doesn't exist"
+            return null
+        }
     }
 
 }

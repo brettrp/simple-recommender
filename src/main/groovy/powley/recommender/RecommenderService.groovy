@@ -38,11 +38,15 @@ class RecommenderService  {
         log.debug "recommend for user ${id} count: ${count}"
 
         def recommendations = SimpleRecommender.instance.getUserRecommendation(Long.parseLong(id), count)
+        if (recommendations != null) {
+            String json = JsonOutput.toJson(recommendations)
+            log.debug "recommendations: ${json}"
+            Response.status(Response.Status.OK).entity(json).build()
+        } else {
+            log.debug "User ${id} does not exist"
+            Response.status(Response.Status.NOT_FOUND).entity('{"error":"User ' + id + ' does not exist"}').build()
+        }
 
-        String json = JsonOutput.toJson(recommendations)
-        log.debug "recommendations: ${json}"
-
-        Response.status(Response.Status.OK).entity(json).build();
     }
 
     /**
@@ -58,11 +62,14 @@ class RecommenderService  {
         log.debug "recommend for item ${id}"
 
         def recommendations = SimpleRecommender.instance.getItemRecommendation(Long.parseLong(id), count)
-
-        String json = JsonOutput.toJson(recommendations)
-        log.debug "recommendations: ${json}"
-
-        Response.status(Response.Status.OK).entity(json).build();
+        if (recommendations != null) {
+            String json = JsonOutput.toJson(recommendations)
+            log.debug "recommendations: ${json}"
+            Response.status(Response.Status.OK).entity(json).build();
+        } else {
+            log.debug "Item ${id} does not exist"
+            Response.status(Response.Status.NOT_FOUND).entity('{"error":"Item ' + id + ' does not exist"}').build()
+        }
     }
 
 }
