@@ -14,13 +14,9 @@ but there is nothing specific to this dataset in the code, and other similar rec
 
 Getting the Source
 =========
-Before you can download the source files, you will need to install git-lfs so that GitHub can handle the large data files bundled with thep roject: 
+Before you can download the source files, you will need to install git-lfs so that GitHub can handle the large data files bundled with the project: https://git-lfs.github.com
 
-https://git-lfs.github.com
-
-Then, use  
- `git clone https://github.com/brettrp/simple-recommender.git`  
-  to download the source - don't use `Download Zip`
+Then, use  `git clone https://github.com/brettrp/simple-recommender.git`  to download the source - don't use `Download Zip`
 
 
 Prequisites
