@@ -29,7 +29,7 @@ class RecommenderService  {
      * Return a list of user based recommendations as JSON
      * @param id the id of the user
      * @param count the maximum number of recommendations to return
-     * @return the reponse including the JSON list of recommendations
+     * @return the response including the JSON list of recommendations
      */
     @GET
     @Path("user/{id}")
@@ -53,7 +53,7 @@ class RecommenderService  {
      * Return a list of item based recommendations as JSON
      * @param id the id of the item
      * @param count the maximum number of recommendations to return
-     * @return the reponse including the JSON list of recommendations
+     * @return the response including the JSON list of recommendations
      */
     @GET
     @Path("item/{id}")
