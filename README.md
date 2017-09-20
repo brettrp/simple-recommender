@@ -29,6 +29,7 @@ Building
 ```bash
 mvn clean install
 ```
+Note that building runs tests on the full bundled dataset, so it does take a few minutes.
 
 Running
 =======
