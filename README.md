@@ -76,7 +76,7 @@ This is a demo application. But it could be scaled up fairly easily:
 - Apache Mahout is integrated with Hadoop, so you can scale up using Map-Reduce by choosing an algorithm such as ALS-WR and running in parallel.
 
 
-Futher Reading
+Further Reading
 ==============
 Apache Mahout: 
 http://mahout.apache.org/users/algorithms/recommender-overview.html
