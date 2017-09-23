@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response
 
 /**
  *  Simple web service for recommender.  Provides two methods:
- *      /recommender/user/n     - provide user based recommendation for item n
+ *      /recommender/user/n     - provide user based recommendation for user n
  *      /recommender/item/n     - provide item based recommendation for item n
  *  Both methods have an optional ?count= parameter to specify the maximum number of recommendations to return.
  */
